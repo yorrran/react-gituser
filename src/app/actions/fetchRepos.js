@@ -21,8 +21,8 @@ export function fetchUserFollowers(id) {
 }
 
 export function fetchUserRepos(id) {
-    //const request = axios.get(`https://api.github.com/user/${id}/repos`).catch(err => err.message )
-    const request = axios.get(`https://api.github.com/search/users?q=yorr`).catch(err => err.message )
+    const request = axios.get(`https://api.github.com/user/${id}/repos`).catch(err => err.message )
+    //const request = axios.get(`https://api.github.com/search/users?q=yorr`).catch(err => err.message )
     return {
         type: 'FETCH_USERREPOS',
         payload: request

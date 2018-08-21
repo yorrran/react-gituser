@@ -6,7 +6,8 @@ import { fetchUserRepos, fetchUserFollowers } from "../actions/fetchRepos";
 const onNaviageUser = function (repo) {
   console.log("var", this);
   this.$history.push('/user/')
-  this.$props.fetchUserDetail(this.id)
+  this.$props.fetchUserRepos(this.id)
+  this.$props.fetchUserFollowers(this.id)
 }
 
 const RepoListElement = (props) => {
@@ -53,12 +54,16 @@ const RepoListElement = (props) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-      fetchUserDetail: (id) => {
+      fetchUserRepos: (id) => {
           if(id) {
-              //dispatch(fetchUserFollowers(id));
               dispatch(fetchUserRepos(id));
           }
-      }
+      },
+      fetchUserFollowers: (id) => {
+        if(id) {
+            dispatch(fetchUserFollowers(id));
+        }
+    }
   };
 };
 

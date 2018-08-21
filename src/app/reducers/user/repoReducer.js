@@ -1,5 +1,3 @@
-import _ from 'lodash'
-
 const repoReducer = (state = {}, action) => {
   switch (action.type) {
       case "FETCH_REPOS_FULFILLED":
