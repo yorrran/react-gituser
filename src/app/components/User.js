@@ -1,6 +1,11 @@
 import React from "react";
+import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 
-export const User = (props) => {
+const User = (props) => {
+
+    console.log('User Detail Props', props.repos.items);
+
     return (
         <div>
             <div className="row">
@@ -16,3 +21,11 @@ export const User = (props) => {
         </div>
     );
 }
+
+const mapStateToProps = (state) => {
+    return {
+        repos: state.repo
+    };
+};
+
+export default withRouter(connect(mapStateToProps)(User));

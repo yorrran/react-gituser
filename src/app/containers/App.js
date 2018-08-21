@@ -1,36 +1,38 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import { User } from "../components/User";
+import User from "../components/User";
 import { Main } from "../components/Main";
 import { setName } from "../actions/userActions";
 import { fetchRepos } from "../actions/fetchRepos";
 import RepoListElement from '../components/RepoListElement'
 
 class App extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.onInputChange = this.onInputChange.bind(this);
+    }
     onInputChange = () => event => {
-        this.props.fetchRepos(event.target.value);
+       console.log(this.refs.userInput.value);
+       this.props.fetchRepos(this.refs.userInput.value)
     }
 
     render() {
         return (
             <div className="container">
-                <Main changeUsername={() => this.props.setName("Anna")} />
-                <User username={this.props.user.name} />
+                {/* <User username={this.props.user.name} /> */}
                 <div className='search-bar'>
-                    <input
+                    <input ref = "userInput"
                         placeholder="Enter a Github User's name"
-                        onChange={this.onInputChange()}
                         type='text'
                     />
+                    <button style={{marginLeft: '10px'}} className = 'btn btn-primary' onClick = {this.onInputChange()}>Search User</button>
                 </div>
                 <div className='repo-list'>
                     <h4>List of available repositories:</h4>
                     <p>(click on any repo to visit on GitHub)</p>
-                    <ul>
-                        {/* <RepoListElement repos={this.props.repos} /> */}
-                        <script>Console.log("this repo");</script>
-                    </ul>
+                        <RepoListElement repos={this.props.repos} />
                 </div>
             </div>
         );
@@ -40,7 +42,8 @@ class App extends React.Component {
 const mapStateToProps = (state) => {
     return {
         user: state.user,
-        math: state.math
+        math: state.math,
+        repos: state.repo
     };
 };
 
@@ -50,8 +53,9 @@ const mapDispatchToProps = (dispatch) => {
             dispatch(setName(name));
         },
         fetchRepos: (user) => {
-            var repo = dispatch(fetchRepos(user));
-            repo;
+            if(user){
+                dispatch(fetchRepos(user));
+            }  
         }
     };
 };

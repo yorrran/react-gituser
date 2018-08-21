@@ -5,11 +5,13 @@ import promise from "redux-promise-middleware";
 
 import math from "./reducers/mathReducer";
 import user from "./reducers/userReducer";
+import repo from "./reducers/repoReducer";
 
 export default createStore(
     combineReducers({
         math,
-        user
+        user,
+        repo
     }),
     {},
     applyMiddleware(logger(), thunk, promise())

@@ -1,22 +1,65 @@
-import _ from 'lodash'
 import React from 'react'
+import { withRouter } from "react-router-dom";
+import { connect } from "react-redux";
+import { fetchUserRepos, fetchUserFollowers } from "../actions/fetchRepos";
 
-const RepoListElement = ({ repos }) => (
-  _.map(repos, repo => (
-    <li
-      key={repo.id}
-      className='list-group-item'
-      onClick={() => window.open(repo.html_url, '_blank')}
-    >
-      <h3 className='blueText'>{repo.name}</h3>
-      <p> Language:
-        {repo.language ? <span className='greenText'> {repo.language}</span> : <span className='redText'> Unknown </span>}
-      </p>
-      <p>Description:</p>
-      {repo.description ? <span className='greenText'> {repo.description}</span> : <span className='redText'> None </span>}
-    </li>
-  )
-  )
-)
+const onNaviageUser = function (repo) {
+  console.log("var", this);
+  this.$history.push('/user/')
+  this.$props.fetchUserDetail(this.id)
+}
 
-export default RepoListElement
+const RepoListElement = (props) => {
+  console.log("props history:", props);
+
+  if (props.repos.items && props.repos.items.length > 0) {
+    // let pageNo = 0;
+    // let itemNo = 10;
+    // let paginatedList = props.repos.slice(pageNo * itemNo, (pageNo + 1) * itemNo);
+    const listItem = props.repos.items.map((repo => {
+      repo.$history = props.history;
+      repo.$props = props;
+
+      return (<tr
+        key={repo.id}
+        className='list-group-item'
+      //onClick={() => window.open(repo.html_url, '_blank')}
+      >
+        <td>
+          <img src={repo.avatar_url} alt={`${repo.login} avatar`} />
+        </td>
+        <td>
+          <p> User:
+        {repo.login ? <span className='greenText' onClick={onNaviageUser.bind(repo)}> {repo.login}</span> : <span className='redText'> Unknown </span>}
+          </p>
+        </td>
+      </tr>
+      )
+    }))
+    return (
+      <table>
+        <tbody>
+          {listItem}
+        </tbody>
+      </table>
+    )
+  }
+  else {
+    return (
+      <div>Nothing</div>
+    )
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+      fetchUserDetail: (id) => {
+          if(id) {
+              //dispatch(fetchUserFollowers(id));
+              dispatch(fetchUserRepos(id));
+          }
+      }
+  };
+};
+
+export default withRouter(connect(null, mapDispatchToProps)(RepoListElement))
