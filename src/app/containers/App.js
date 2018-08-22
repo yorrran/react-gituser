@@ -9,8 +9,8 @@ class App extends React.Component {
     render() {
         return (
             <div>
-                <Header />
                 <div className="container">
+                    <Header />
                     <Route path='/' exact component={Main} />
                     <Route path='/user' exact component={User} />
                 </div>

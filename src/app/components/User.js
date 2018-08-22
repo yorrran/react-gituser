@@ -4,31 +4,28 @@ import { withRouter } from "react-router-dom";
 
 const User = (props) => {
 
-    console.log('User Detail Props', props.follower.followers);
-    console.log('User Detail Props', props.follower.following);
-    console.log('User Detail Props repo', props);
     let list = [];
     if(props.userrepo && props.userrepo.length > 0) {
-        console.log('User Detail Props repo map', props.userrepo.map(repo => repo.name));
         props.userrepo.map((repo)=>{
-            list.push(<li key={repo.id}> {repo.name}</li>)
+            list.push(<div key={repo.id}> {repo.name}</div>)
         });
     }
 
     return (
         <div>
             <div className="row">
-                <div className="col-xs-12">
+                <div className="col-12">
                     <h1>The User Page</h1>
                 </div>
             </div>
             <div className="row">
-                <div className="col-xs-12">
-                    <p>followers: {props.follower.followers}</p>
-                    <p>followings: {props.follower.following}</p>
+                <div className="col-12 col-sm-6">
+                    <div><strong>Repos:</strong></div>
+                    {list}
                 </div>
-                <div>
-                    { list }
+                <div className="col-12 col-sm-6">
+                    <div><strong>Followers:</strong> {props.follower.followers}</div>
+                    <div><strong>Followings:</strong> {props.follower.following}</div>
                 </div>
             </div>
         </div>

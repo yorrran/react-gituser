@@ -3,7 +3,6 @@ import axios from 'axios'
 const API_URL = 'https://api.github.com/search/users?q='
 
 export function fetchRepos(user,page) {
-    console.log("fetch repo actions");
     const pageQuery = '&page='
     const request = axios.get(`${API_URL}${user}${pageQuery}${page}`)
         .catch(err => { return err.message })
