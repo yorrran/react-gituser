@@ -8,6 +8,7 @@ import user from "./reducers/userReducer";
 import repo from "./reducers/user/repoReducer";
 import follower from "./reducers/user/followerReducer";
 import userrepo from "./reducers/user/userrepoReducer";
+import page from "./reducers/pageReducer";
 
 export default createStore(
     combineReducers({
@@ -15,7 +16,8 @@ export default createStore(
         user,
         repo,
         follower,
-        userrepo
+        userrepo,
+        page
     }),
     {},
     applyMiddleware(logger(), thunk, promise())

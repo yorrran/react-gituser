@@ -1,22 +1,11 @@
-const userReducer = (state = {
-    name: "Max",
-    age: 27
-}, action) => {
+const userReducer = (state = "", action) => {
     switch (action.type) {
-        case "SET_NAME_FULFILLED":
-            state = {
-                ...state,
-                name: action.payload
-            };
+        case "SET_NAME":
+            return action.payload;
             break;
-        case "SET_AGE":
-            state = {
-                ...state,
-                age: action.payload
-            };
-            break;
-    }
+        default:
     return state;
+    }
 };
 
 export default userReducer;

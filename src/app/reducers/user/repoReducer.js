@@ -1,8 +1,7 @@
 const repoReducer = (state = {}, action) => {
   switch (action.type) {
       case "FETCH_REPOS_FULFILLED":
-      case "FETCH_FOLLOWERS_FULFILLED":
-      case "FETCH_USERREPOS_FULFILLED":
+      console.log("repo data:", action.payload.data);
         return action.payload.data;
       break;
       default:
