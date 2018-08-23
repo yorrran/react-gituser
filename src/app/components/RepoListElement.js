@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { fetchUserRepos, fetchUserFollowers,fetchRepos } from "../actions/fetchRepos";
 import { pageRepo} from "../actions/paginatedRepo";
 import { setIsloading } from "../actions/isloadingActions";
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 class RepoListElement extends React.Component { 
     constructor(props) {
@@ -92,9 +93,10 @@ class RepoListElement extends React.Component {
 							{this.props.page === totalPages - 1 ? null : nextEnd}
 						</ul>
 					</div>
-					<div className="row">
+					<ReactCSSTransitionGroup className="row" transitionName="users" transitionAppear = {true} transitionAppearTimeout = {1000}
+						transitionEnter = {false} transitionLeave = {false}>
 						{listItem}
-					</div>
+                    </ReactCSSTransitionGroup>
 				</div>
 			)
 		  }

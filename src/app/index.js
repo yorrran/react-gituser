@@ -6,7 +6,7 @@ import { BrowserRouter, Route } from "react-router-dom"
 import App from "./containers/App";
 import store from "./store";
 
-import style from './../assets/style.scss';
+import './../assets/style.scss';
 
 render(
     <Provider store={store}>
