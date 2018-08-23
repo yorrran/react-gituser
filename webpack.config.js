@@ -1,4 +1,5 @@
 var path = require("path");
+var webpack = require('webpack');
 
 var DIST_DIR = path.resolve(__dirname, "dist");
 var SRC_DIR = path.resolve(__dirname, "src");
@@ -25,7 +26,12 @@ var config = {
                 loaders: ['style', 'css', 'sass']
             }
         ]
-    }
+    },
+    plugins: [
+        new webpack.DefinePlugin({
+            'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+        }),
+    ]
 };
 
 module.exports = config;
