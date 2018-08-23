@@ -102,7 +102,7 @@ class RepoListElement extends React.Component {
 		  }
 		  else {
 			return (
-				<div>Nothing</div>
+				<div>Nothing is provided if you don't have a clue what you are looking for</div>
 			)
 		}
 	}
