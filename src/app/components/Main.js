@@ -18,7 +18,7 @@ class Main extends React.Component {
     }
 
     render() {
-        let loadingIcon = (<img src="https://image.flaticon.com/icons/png/512/39/39979.png" className="loading" />);
+        let loadingIcon = (<img src="./../assets/loading.png" className="loading" />);
         return (
             <div className='row mt-4 justify-content-md-center'>
                 <div className='col-12 col-sm-6'>
