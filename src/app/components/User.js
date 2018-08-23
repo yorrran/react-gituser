@@ -19,7 +19,7 @@ const User = (props) => {
                 </div>
             </div>
             <div className="row">
-                <div className="col-12 col-sm-6">
+                <div className="col-12 col-sm-6 mb-4">
                     <div><strong>Repos:</strong></div>
                     {list}
                 </div>
