@@ -1,6 +1,9 @@
-# ReactJS Basics
+# React+GitHub Api+redux
 
-This repository accompanies my ReactJS / Redux - Basics YouTube Series.
+This project consumes github api and build use React + Redux
+
 
 # Usage
-Switch to the branch you're interested in (branches = different stages in the series) and compare/ download the source code.
+Git clone the project
+npm install
+npm start: the project starts on port: http://localhost:8080/
