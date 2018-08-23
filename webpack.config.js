@@ -36,7 +36,7 @@ var config = {
         new CopyWebpackPlugin([
             {
                 from: path.resolve(__dirname, './src/assets'),
-                to: 'assets',
+                to: 'dist/assets',
                 ignore: ['.png']
             }
         ]),
