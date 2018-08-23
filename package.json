@@ -17,7 +17,7 @@
   "keywords": [
     "reactjs"
   ],
-  "author": "Maximilian Schwarzmueller",
+  "author": "Pang Yaran",
   "license": "MIT",
   "dependencies": {
     "axios": "^0.18.0",
