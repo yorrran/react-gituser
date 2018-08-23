@@ -21,10 +21,10 @@ class Main extends React.Component {
         let loadingIcon = (<img src="./../assets/loading.png" className="loading" />);
         return (
             <div className='row mt-4 justify-content-md-center'>
-                <div className='col-6 mb-4'>
+                <div className='col-12 col-sm-6'>
                     <div className="input-group">
                         <input ref="userInput"
-                            className="form-control"
+                            className="form-control mr-2" 
                             placeholder="Enter a Github User's name"
                             type='text'/>
                         <span className="input-group-btn">
