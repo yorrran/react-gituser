@@ -12,7 +12,7 @@
     "build": "webpack -d && cp src/index.html dist/index.html && webpack-dev-server --content-base src/ --inline --hot --history-api-fallback",
     "build:prod": "webpack -p && cp src/index.html dist/index.html",
     "heroku-prebuild": "",
-    "heroku-postbuild": ""
+    "heroku-postbuild": "webpack -p && cp src/index.html dist/index.html"
   },
   "keywords": [
     "reactjs"
